@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DOCKER_USER="";
+if [ "" != "$1" ] ; then
+	DOCKER_USER="$1/";
+fi
+
+CURRENT=`dirname $0`
+DOCKER_CMD="docker build -t $DOCKER_USER""supervisord:centos6.6 $CURRENT"
+echo $DOCKER_CMD
+$DOCKER_CMD

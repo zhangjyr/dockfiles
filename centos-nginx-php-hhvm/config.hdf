@@ -1,4 +1,4 @@
-PidFile = /var/run/hhvm/pid
+PidFile = /var/run/hhvm.pid
 
 Eval {
 	JitASize = 536870912 #512MB
