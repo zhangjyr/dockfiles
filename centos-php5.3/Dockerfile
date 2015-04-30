@@ -12,6 +12,8 @@ RUN rm -rf /php && yum -y erase "freetype-devel" "libjpeg-devel" "libpng-devel" 
 
 # Step2 Add php-fpm configuration
 ADD php-fpm.conf /usr/local/php/etc/php-fpm.conf
+ADD scripts/php-fpm /etc/init.d/php-fpm
+RUN ln -s /usr/local/php/sbin/php-fpm /usr/sbin/php-fpm
 
 # Step3 Override supervisord configuration
 ADD supervisord.conf /etc/supervisord.conf
