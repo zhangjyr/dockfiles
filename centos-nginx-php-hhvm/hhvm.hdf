@@ -9,9 +9,7 @@ Eval {
 
 Server {
   Port = 8000
-  SourceRoot = /web/online/
   Type = fastcgi
-  DefaultDocument = index.php
 }
 
 Log {

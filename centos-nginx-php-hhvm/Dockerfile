@@ -24,7 +24,7 @@ RUN ["yum", "-y", "install", "nginx", "hhvm"]
 RUN mkdir -p /web/online && chmod a+r /web/online && echo "<?php echo 'Rerun image with option -v localpath:/web/online to view your site.<br/>';phpinfo(); ?>" > /web/online/index.php
 
 # Step10-11 Setup hhvm - add config for hhvm
-ADD config.hdf /etc/hhvm/config.hdf 
+ADD hhvm.hdf /etc/hhvm/config.hdf 
 
 RUN service hhvm restart
 
