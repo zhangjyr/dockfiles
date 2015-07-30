@@ -1,0 +1,42 @@
+web:
+  build: ./default
+  links:
+   - cgi
+  ports:
+   - "80:80"
+  volumes_from:
+   - code
+   - logs
+  restart: always
+cgi:
+  image: zhangjyr/php-mri
+  links:
+   - redis
+  volumes:
+   - ./default/php-fpm:/root/php-fpm
+  volumes_from:
+   - code
+   - logs
+  restart: always
+  command: /root/php-fpm
+redis:
+  image: redis:latest
+  command: redis-server /usr/local/etc/redis/redis.conf
+  volumes:
+   - ./default/redis.conf:/usr/local/etc/redis/redis.conf
+  volumes_from:
+   - data
+   - logs
+  restart: always
+code:
+  image: centos:6.6
+  command: /bin/true
+  volumes:
+   - /Users/Tianium/Studio/Artmono/wanke:/data/codes/dev/wanke
+data:
+  image: centos:6.6
+  command: /bin/true
+  volumes:
+   - /data/dbs/redis
+logs:
+  build: ./logs
